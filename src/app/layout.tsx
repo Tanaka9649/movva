@@ -3,9 +3,9 @@ import localFont from "next/font/local";
 import { evento } from "@/config/evento";
 import "./globals.css";
 
-// Manrope (OFL) hospedada no próprio projeto: sem dependência de rede no build nem no carregamento.
+// Manrope (OFL) servida pelo próprio site via pacote @fontsource: sem chamadas ao Google Fonts.
 const manrope = localFont({
-  src: "../fonts/manrope-latin-var.woff2",
+  src: "../../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2",
   weight: "200 800",
   style: "normal",
   display: "swap",

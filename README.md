@@ -43,4 +43,4 @@ npm run build      # build de produção
 npm run typecheck
 ```
 
-A fonte Manrope (licença OFL) está hospedada no próprio projeto em `src/fonts/`.
+A fonte Manrope (licença OFL) vem do pacote `@fontsource-variable/manrope` e é servida pelo próprio site.
