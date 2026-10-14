@@ -44,3 +44,9 @@ npm run typecheck
 ```
 
 A fonte Manrope (licença OFL) vem do pacote `@fontsource-variable/manrope` e é servida pelo próprio site.
+
+## Publicação
+
+- Repositório: `Tanaka9649/movva` (branch `main`)
+- Projeto Vercel: `imersao-sucessao-patrimonio` → https://imersao-sucessao-patrimonio.vercel.app
+- Cada push na `main` publica automaticamente em produção.
