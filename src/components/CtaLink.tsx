@@ -10,11 +10,11 @@ const sizes = {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-bronze text-ink hover:bg-bronze-soft shadow-[0_0_0_1px_rgba(194,154,98,0.35)] hover:shadow-[0_10px_30px_-12px_rgba(194,154,98,0.6)]",
+    "bg-rose text-ink hover:bg-rose-soft shadow-[0_0_0_1px_rgba(215,163,186,0.35)] hover:shadow-[0_10px_30px_-12px_rgba(215,163,186,0.6)]",
   "outline-dark":
-    "border border-line-dark text-paper hover:border-bronze hover:text-bronze-soft",
+    "border border-line-dark text-paper hover:border-rose hover:text-rose-soft",
   "outline-light":
-    "border border-ink/25 text-ink hover:border-bronze-deep hover:text-bronze-deep",
+    "border border-ink/25 text-ink hover:border-wine hover:text-wine",
 };
 
 export function Arrow({ className = "" }: { className?: string }) {

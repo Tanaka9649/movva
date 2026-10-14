@@ -57,7 +57,7 @@ export const evento = {
   // IDENTIFICAÇÃO DO EVENTO
   // ---------------------------------------------------------------
   /** Nome provisório até a confirmação do nome oficial */
-  name: "Imersão Empresarial",
+  name: "Movva",
   theme: "Planejamento sucessório e proteção patrimonial",
   description:
     "Uma imersão para empresários e produtores rurais que querem compreender como preparar a sucessão, organizar o patrimônio e dar continuidade aos negócios entre gerações.",
@@ -100,10 +100,14 @@ export const evento = {
   // ---------------------------------------------------------------
   // IMAGENS E MARCAS
   // ---------------------------------------------------------------
-  /** Logo do evento em /public (preferencialmente SVG ou PNG claro). Vazio = nome em texto. */
-  logo: "",
+  /** Logo completa (símbolo + MOVVA + tagline) com texto branco — para fundos escuros */
+  logo: "/brand/movva-logo-claro.png",
+  /** Logo completa com texto preto — para fundos claros */
+  logoOnLight: "/brand/movva-logo-escuro.png",
+  /** Símbolo isolado — para espaços pequenos (cabeçalho, ícone) e marca d'água */
+  symbol: "/brand/movva-simbolo.png",
   /** Texto alternativo da logo */
-  logoAlt: "",
+  logoAlt: "Movva Planejamento Sucessório",
 
   // ---------------------------------------------------------------
   // REALIZAÇÃO E CONTATOS

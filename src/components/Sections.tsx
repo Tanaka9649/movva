@@ -6,10 +6,10 @@ function Eyebrow({ children, tone = "dark" }: { children: React.ReactNode; tone?
   return (
     <p
       className={`flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] ${
-        tone === "dark" ? "text-bronze" : "text-bronze-deep"
+        tone === "dark" ? "text-rose" : "text-wine"
       }`}
     >
-      <span aria-hidden="true" className={`h-px w-8 ${tone === "dark" ? "bg-bronze/70" : "bg-bronze-deep/70"}`} />
+      <span aria-hidden="true" className={`h-px w-8 ${tone === "dark" ? "bg-rose/70" : "bg-wine/70"}`} />
       {children}
     </p>
   );
@@ -47,7 +47,7 @@ export function Reflexao() {
         <ol className="reveal border-t border-line-light">
           {questions.map((q, i) => (
             <li key={q} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-line-light py-7 sm:grid-cols-[4.5rem_1fr] sm:py-9">
-              <span aria-hidden="true" className="pt-1 text-sm font-bold tabular-nums tracking-wider text-bronze-deep">
+              <span aria-hidden="true" className="pt-1 text-sm font-bold tabular-nums tracking-wider text-wine">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="text-pretty text-xl font-semibold leading-snug tracking-[-0.01em] sm:text-2xl">{q}</p>
@@ -95,10 +95,10 @@ export function Temas() {
           {pillars.map((p, i) => (
             <article key={p.title} className="group border-t border-line-dark py-8 md:py-0 md:pt-8">
               <div className="flex items-baseline justify-between gap-4">
-                <span aria-hidden="true" className="text-5xl font-extrabold tabular-nums tracking-tight text-line-dark transition-colors duration-500 group-hover:text-bronze/80 sm:text-6xl">
+                <span aria-hidden="true" className="text-5xl font-extrabold tabular-nums tracking-tight text-line-dark transition-colors duration-500 group-hover:text-rose/80 sm:text-6xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span aria-hidden="true" className="h-px flex-1 origin-left scale-x-0 bg-bronze transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
+                <span aria-hidden="true" className="h-px flex-1 origin-left scale-x-0 bg-rose transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
               </div>
               <h3 className="mt-6 text-xl font-bold tracking-[-0.01em] text-paper sm:text-2xl">{p.title}</h3>
               <p className="mt-3 text-pretty leading-relaxed text-muted-dark">{p.text}</p>
@@ -156,7 +156,7 @@ export function Palestrantes() {
                   </div>
                 )}
                 <h3 className="mt-5 text-xl font-bold text-paper">{s.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-bronze">{s.specialty}</p>
+                <p className="mt-1 text-sm font-semibold text-rose">{s.specialty}</p>
                 {s.bio && <p className="mt-3 text-pretty leading-relaxed text-muted-dark">{s.bio}</p>}
               </li>
             ))}
@@ -192,7 +192,7 @@ export function Palestrantes() {
         {testimonials.length > 0 && (
           <ul className="reveal mt-14 grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
-              <li key={t.author} className="border-l-2 border-bronze pl-6">
+              <li key={t.author} className="border-l-2 border-rose pl-6">
                 <blockquote className="text-pretty text-lg leading-relaxed text-paper">“{t.quote}”</blockquote>
                 <p className="mt-4 text-sm font-semibold text-paper">
                   {t.author}
@@ -253,7 +253,7 @@ export function ParaQuem() {
             <ol className="mt-8 border-t border-line-light">
               {schedule.map((s) => (
                 <li key={`${s.time}-${s.title}`} className="grid gap-2 border-b border-line-light py-6 sm:grid-cols-[9rem_1fr] sm:gap-8">
-                  <span className="font-bold tabular-nums text-bronze-deep">{s.time}</span>
+                  <span className="font-bold tabular-nums text-wine">{s.time}</span>
                   <div>
                     <p className="text-lg font-semibold">{s.title}</p>
                     {s.description && <p className="mt-1 text-muted-light">{s.description}</p>}
@@ -278,13 +278,17 @@ export function Footer() {
     <footer className="border-t border-line-dark bg-ink">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div>
-          <p className="text-lg font-bold tracking-tight text-paper">{evento.name}</p>
-          <p className="mt-1 text-sm text-muted-dark">{evento.theme}</p>
+          {evento.logo ? (
+            <Image src={evento.logo} alt={evento.logoAlt || evento.name} width={939} height={200} className="h-12 w-auto sm:h-14" />
+          ) : (
+            <p className="text-lg font-bold tracking-tight text-paper">{evento.name}</p>
+          )}
+          <p className="mt-4 text-sm text-muted-dark">{evento.theme}</p>
           {evento.organizer && (
             <p className="mt-4 text-sm text-muted-dark">
               Realização:{" "}
               {evento.organizerUrl ? (
-                <a href={evento.organizerUrl} className="font-semibold text-paper underline decoration-line-dark underline-offset-4 hover:decoration-bronze" target="_blank" rel="noopener noreferrer">
+                <a href={evento.organizerUrl} className="font-semibold text-paper underline decoration-line-dark underline-offset-4 hover:decoration-rose" target="_blank" rel="noopener noreferrer">
                   {evento.organizer}
                 </a>
               ) : (
@@ -299,7 +303,7 @@ export function Footer() {
             {contacts.map((c) => (
               <li key={c.href}>
                 <span className="text-muted-dark">{c.label}: </span>
-                <a href={c.href} className="font-semibold text-paper underline decoration-line-dark underline-offset-4 hover:decoration-bronze">
+                <a href={c.href} className="font-semibold text-paper underline decoration-line-dark underline-offset-4 hover:decoration-rose">
                   {c.value}
                 </a>
               </li>

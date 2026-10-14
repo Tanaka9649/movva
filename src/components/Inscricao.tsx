@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { evento, isValidRegistrationUrl } from "@/config/evento";
 import { Arrow, buttonClasses } from "./CtaLink";
@@ -74,7 +75,7 @@ function RegistrationButton() {
         }}
       >
         <div className="relative rounded-2xl border border-line-dark bg-graphite p-7 text-paper shadow-2xl sm:p-9">
-          <span aria-hidden="true" className="absolute inset-x-7 top-0 h-px bg-bronze sm:inset-x-9" />
+          <span aria-hidden="true" className="absolute inset-x-7 top-0 h-px bg-rose sm:inset-x-9" />
           <h2 id="aviso-inscricao-title" className="pr-10 text-xl font-bold tracking-[-0.01em]">
             Inscrições em breve
           </h2>
@@ -119,19 +120,23 @@ export function Inscricao() {
 
   return (
     <section id="inscricao" aria-labelledby="inscricao-title" className="bg-ink px-3 py-16 sm:px-6 md:py-24">
-      <div className="reveal relative mx-auto max-w-6xl overflow-hidden rounded-[1.75rem] border border-bronze/35 bg-graphite">
-        {/* Elemento gráfico abstrato */}
-        <svg aria-hidden="true" viewBox="0 0 600 600" className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] opacity-60 md:-right-24 md:-top-24" fill="none">
-          {[90, 150, 210, 270].map((r) => (
-            <circle key={r} cx="300" cy="300" r={r} stroke="#c29a62" strokeOpacity={0.09 + (270 - r) / 2000} />
-          ))}
-          <circle cx="300" cy="300" r="6" fill="#c29a62" fillOpacity="0.5" />
-        </svg>
+      <div className="reveal relative mx-auto max-w-6xl overflow-hidden rounded-[1.75rem] border border-rose/30 bg-graphite">
+        {/* Marca d'água com o símbolo Movva */}
+        {evento.symbol && (
+          <Image
+            src={evento.symbol}
+            alt=""
+            aria-hidden="true"
+            width={277}
+            height={256}
+            className="pointer-events-none absolute -bottom-16 -right-20 h-auto w-[22rem] select-none opacity-[0.07] sm:w-[28rem] lg:-bottom-24 lg:-right-16 lg:w-[34rem]"
+          />
+        )}
 
         <div className={`relative grid gap-12 px-6 py-12 sm:px-12 sm:py-16 lg:gap-16 lg:px-16 lg:py-20 ${hasDetails ? "lg:grid-cols-[1.3fr_0.7fr]" : ""}`}>
           <div className={hasDetails ? "" : "max-w-3xl"}>
-            <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-bronze">
-              <span aria-hidden="true" className="h-px w-8 bg-bronze/70" />
+            <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-rose">
+              <span aria-hidden="true" className="h-px w-8 bg-rose/70" />
               Inscrição
             </p>
             <h2 id="inscricao-title" className="mt-6 text-balance text-[2rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-paper sm:text-5xl">
@@ -171,7 +176,7 @@ export function Inscricao() {
                   <ul className="mt-3 space-y-2">
                     {inclusions.map((item) => (
                       <li key={item} className="flex gap-3 text-paper">
-                        <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-bronze" />
+                        <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-rose" />
                         {item}
                       </li>
                     ))}

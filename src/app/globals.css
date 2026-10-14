@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0d0d0c;
-  --color-graphite: #1a1a18;
-  --color-graphite-2: #252522;
-  --color-line-dark: #34332f;
-  --color-paper: #f4f1ea;
-  --color-paper-2: #ebe6db;
-  --color-line-light: #d6cfc0;
-  --color-muted-dark: #a9a49a;
-  --color-muted-light: #5a564e;
-  /* Destaque: bronze. "bronze" para fundos escuros e botões; "bronze-deep" para texto sobre fundo claro (contraste AA). */
-  --color-bronze: #c29a62;
-  --color-bronze-soft: #d6b583;
-  --color-bronze-deep: #7a5a2e;
+  /* Base neutra levemente aquecida em direção ao vinho da marca Movva */
+  --color-ink: #0e0c0d;
+  --color-graphite: #1b181a;
+  --color-graphite-2: #262224;
+  --color-line-dark: #3a3337;
+  --color-paper: #f6f2f1;
+  --color-paper-2: #eee7e6;
+  --color-line-light: #dcd1d1;
+  --color-muted-dark: #ada4a8;
+  --color-muted-light: #5e5559;
+  /* Destaque derivado da logo, suavizado:
+     rose = rosé antigo (botões e destaques sobre fundo escuro)
+     wine = vinho (texto de destaque sobre fundo claro, contraste AA)
+     brand / brand-light = cores exatas da logo, uso apenas decorativo */
+  --color-rose: #d7a3ba;
+  --color-rose-soft: #e6c1d1;
+  --color-wine: #8a2c57;
+  --color-brand: #9c1e57;
+  --color-brand-light: #e391b3;
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 
@@ -49,19 +55,19 @@ body {
 }
 
 ::selection {
-  background: var(--color-bronze);
+  background: var(--color-rose);
   color: var(--color-ink);
 }
 
 /* Foco visível e consistente */
 :focus-visible {
-  outline: 2px solid var(--color-bronze);
+  outline: 2px solid var(--color-rose);
   outline-offset: 3px;
   border-radius: 2px;
 }
 .on-light :focus-visible,
 .on-light:focus-visible {
-  outline-color: var(--color-bronze-deep);
+  outline-color: var(--color-wine);
 }
 
 .text-balance {

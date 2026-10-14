@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-bronze focus:px-5 focus:py-3 focus:font-semibold focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-rose focus:px-5 focus:py-3 focus:font-semibold focus:text-ink"
       >
         Pular para o conteúdo
       </a>
