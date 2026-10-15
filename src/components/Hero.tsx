@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { evento } from "@/config/evento";
 import { CtaLink } from "./CtaLink";
+import { HeroVideo } from "./HeroVideo";
 
 /* Instante em que a linha de continuidade alcança cada geração (fração do desenho).
    Comprimento total da linha ≈ 359; o primeiro trecho mede ≈ 191. */
@@ -86,6 +87,14 @@ export function Hero() {
 
   return (
     <section id="topo" aria-labelledby="hero-title" className="relative isolate overflow-hidden">
+      {/* Vídeo desfocado de fundo; as camadas escuras garantem a leitura do texto sobre qualquer imagem */}
+      {(evento.topoVideo.mp4 || evento.topoVideo.webm) && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-20">
+          <HeroVideo mp4={evento.topoVideo.mp4} webm={evento.topoVideo.webm} poster={evento.topoVideo.poster} />
+          <div className="absolute inset-0 bg-ink/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-ink/50 via-transparent to-ink" />
+        </div>
+      )}
       {/* Grade sutil de fundo */}
       <div
         aria-hidden="true"

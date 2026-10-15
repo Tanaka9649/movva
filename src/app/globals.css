@@ -20,6 +20,8 @@
   --color-wine: #8a2c57;
   --color-brand: #9c1e57;
   --color-brand-light: #e391b3;
+  /* Rosa predominante do símbolo Movva (mediana dos pixels da logo); texto branco passa em AA */
+  --color-logo-pink: #b53971;
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 
@@ -212,6 +214,15 @@ body {
   transform: translateY(-101%);
 }
 
+/* Fita em movimento */
+@keyframes fita {
+  to { transform: translateX(-50%); }
+}
+.fita-track {
+  animation: fita var(--fita-dur, 70s) linear infinite;
+  will-change: transform;
+}
+
 /* Crachá interativo */
 .cracha-stage {
   opacity: 0;
@@ -299,5 +310,8 @@ dialog.modal.closing::backdrop {
   }
   .draw {
     stroke-dasharray: none;
+  }
+  .fita-track {
+    animation: none;
   }
 }
