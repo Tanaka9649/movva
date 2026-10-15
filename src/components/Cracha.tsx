@@ -14,9 +14,10 @@ import { useEffect, useRef } from "react";
 type Particle = { x: number; y: number; px: number; py: number; im: number };
 
 const CARD = { w: 560, h: 871 }; // proporção da arte do crachá
-const CLIP = { w: 174, h: 360 }; // proporção da presilha
+const CLIP = { w: 721, h: 1515 }; // proporção da presilha (vista de frente)
 const LOGO = { w: 520, h: 108 }; // proporção da logo do cordão
-const CLIP_RING = { x: 0.52, y: 0.13 }; // centro do anel dentro da imagem da presilha
+const CLIP_RING = { x: 0.417, y: 0.197 }; // centro do anel dentro da imagem da presilha
+const CLIP_BODY_X = 0.597; // centro do corpo da presilha (o anel fica deslocado para a esquerda)
 
 const SEGMENTS = 8; // pontos por tira do cordão
 const STEP = 1000 / 60;
@@ -50,6 +51,7 @@ export function Cracha({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const edgePaths = Array.from(svg.querySelectorAll<SVGPathElement>("[data-edge]"));
     const bodyPaths = Array.from(svg.querySelectorAll<SVGPathElement>("[data-body]"));
+    const LOGO_AT = [0.26, 0.66]; // posição de cada logo ao longo da tira (fração do comprimento)
     const logoEls = [0, 1].map((i) => Array.from(svg.querySelectorAll<SVGImageElement>(`[data-logo="${i}"]`)));
 
     // ---------- estado da simulação
@@ -59,7 +61,6 @@ export function Cracha({
     let rw = 22;
     let lw = 0;
     let lh = 0;
-    let pitch = 80;
     let body: Particle[] = [];
     let bodyCons: { a: number; b: number; d: number }[] = [];
     let strands: Particle[][] = [];
@@ -94,22 +95,22 @@ export function Cracha({
       if (!W || !H) return false;
       // escala do crachá: cabe na largura (52%) e na altura disponível
       const sW = (W * 0.52) / 200;
-      const sH = (H - 150 - 36) / (63 + (200 * CARD.h) / CARD.w);
+      const sH = (H - 150 - 36) / (66 + (200 * CARD.h) / CARD.w);
       s = Math.max(0.5, Math.min(1.1, sW, sH));
       const cw = 200 * s;
       const ch = (cw * CARD.h) / CARD.w;
-      const clipH = 100 * s;
+      const clipH = 130 * s;
       const clipW = (clipH * CLIP.w) / CLIP.h;
-      const d = clipH * (1 - CLIP_RING.y) - 24 * s; // anel → borda de cima do crachá
+      const d = clipH * (1 - CLIP_RING.y) - clipH * 0.2; // anel → borda de cima do crachá (a presilha cobre 20% da altura, sem tapar a logo do crachá)
+      const off = (CLIP_BODY_X - CLIP_RING.x) * clipW; // o corpo da presilha fica à direita do anel; o crachá se centraliza no corpo
       rw = 22 * s;
       lh = rw * 0.45;
       lw = (lh * LOGO.w) / LOGO.h;
-      pitch = lw * 1.7;
 
       // DOM do crachá (origem no anel da presilha)
       card!.style.width = `${cw}px`;
       card!.style.height = `${ch}px`;
-      card!.style.left = `${-cw / 2}px`;
+      card!.style.left = `${off - cw / 2}px`;
       card!.style.top = `${d}px`;
       card!.style.borderRadius = `${cw * 0.035}px`;
       clipEl!.style.width = `${clipW}px`;
@@ -123,7 +124,7 @@ export function Cracha({
       const py = Math.max(110, Math.min(210, H - (d + ch) - 36));
       const cx = W / 2;
       body = [
-        mk(cx, py, 1), // 0: anel da presilha
+        mk(cx - off, py, 1), // 0: anel da presilha
         mk(cx - cw / 2, py + d, 1), // 1: canto sup. esq.
         mk(cx + cw / 2, py + d, 1), // 2: canto sup. dir.
         mk(cx - cw / 2, py + d + ch, 1), // 3: canto inf. esq.
@@ -141,7 +142,7 @@ export function Cracha({
       segRest = [];
       for (const sign of [-1, 1]) {
         const a = { x: cx + sign * ax, y: -14 };
-        const len = Math.hypot(cx - a.x, py - a.y) * 1.01;
+        const len = Math.hypot(cx - off - a.x, py - a.y) * 1.01;
         const rest = len / SEGMENTS;
         const pts: Particle[] = [];
         for (let i = 0; i <= SEGMENTS; i++) {
@@ -150,7 +151,7 @@ export function Cracha({
             break;
           }
           const t = i / SEGMENTS;
-          pts.push(mk(a.x + (cx - a.x) * t, a.y + (py - a.y) * t, i === 0 ? 0 : 6));
+          pts.push(mk(a.x + (cx - off - a.x) * t, a.y + (py - a.y) * t, i === 0 ? 0 : 6));
         }
         strands.push(pts);
         segRest.push(rest);
@@ -256,11 +257,7 @@ export function Cracha({
         for (let i = 1; i < st.length; i++) cum.push(cum[i - 1] + Math.hypot(st[i].x - st[i - 1].x, st[i].y - st[i - 1].y));
         const total = cum[cum.length - 1];
         logoEls[k].forEach((el, n) => {
-          const dd = 48 * s + n * pitch;
-          if (dd + lw / 2 > total - 26 * s) {
-            el.setAttribute("opacity", "0");
-            return;
-          }
+          const dd = total * LOGO_AT[n];
           let i = 1;
           while (i < cum.length - 1 && cum[i] < dd) i++;
           const seg = cum[i] - cum[i - 1] || 1;
@@ -427,7 +424,7 @@ export function Cracha({
           <g key={k}>
             <path data-edge="" stroke="#2c2628" strokeLinecap="butt" strokeLinejoin="round" />
             <path data-body="" stroke="#0a0809" strokeLinecap="butt" strokeLinejoin="round" />
-            {[0, 1, 2, 3].map((n) => (
+            {[0, 1].map((n) => (
               <image key={n} data-logo={k} href={strapLogo} opacity="0" preserveAspectRatio="xMidYMid meet" />
             ))}
           </g>
