@@ -92,7 +92,7 @@ export const evento = {
   // ---------------------------------------------------------------
   speakers: [] as Speaker[],
   /** Formato do evento, ex.: "Presencial, em um dia" */
-  format: "Mesa redonda",
+  format: "Imersão",
   schedule: [] as ScheduleItem[],
   testimonials: [] as Testimonial[],
   pastEventPhotos: [] as PastEventPhoto[],
@@ -155,7 +155,7 @@ export const evento = {
     },
     {
       question: "Quando, onde e em qual formato será realizada?",
-      answer: "No dia 11 de novembro de 2026, em Frutal/MG, no formato de mesa redonda.",
+      answer: "No dia 11 de novembro de 2026, em Frutal/MG, em formato de imersão.",
     },
     {
       question: "Os temas se aplicam a propriedades rurais e imóveis?",
