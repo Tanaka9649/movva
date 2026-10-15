@@ -9,7 +9,7 @@
   --color-paper: #f6f2f1;
   --color-paper-2: #eee7e6;
   --color-line-light: #dcd1d1;
-  --color-muted-dark: #ada4a8;
+  --color-muted-dark: #c9c0c4;
   --color-muted-light: #5e5559;
   /* Destaque derivado da logo, suavizado:
      rose = rosé antigo (botões e destaques sobre fundo escuro)
@@ -33,7 +33,7 @@
 
 @media (max-width: 767px) {
   :root {
-    --mobile-bar-h: calc(74px + env(safe-area-inset-bottom));
+    --mobile-bar-h: calc(78px + env(safe-area-inset-bottom));
   }
 }
 

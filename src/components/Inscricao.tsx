@@ -14,7 +14,7 @@ function RegistrationButton() {
   const [isOpen, setIsOpen] = useState(false);
   const url = evento.registrationUrl.trim();
   const active = isValidRegistrationUrl(url);
-  const cls = `${buttonClasses.base} ${buttonClasses.sizes.md} ${buttonClasses.variants.primary} w-full sm:w-auto min-h-14 px-8 text-base`;
+  const cls = `${buttonClasses.base} ${buttonClasses.sizes.md} ${buttonClasses.variants.primary} w-full sm:w-auto`;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -119,8 +119,9 @@ export function Inscricao() {
   const hasDetails = Boolean(evento.price) || facts.length > 0 || inclusions.length > 0;
 
   return (
-    <section id="inscricao" aria-labelledby="inscricao-title" className="bg-ink px-3 py-16 sm:px-6 md:py-24">
-      <div className="reveal relative mx-auto max-w-6xl overflow-hidden rounded-[1.75rem] border border-rose/30 bg-graphite">
+    <section id="inscricao" aria-labelledby="inscricao-title" className="bg-paper pb-16 md:pb-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="reveal relative overflow-hidden rounded-xl bg-ink">
         {/* Marca d'água com o símbolo Movva */}
         {evento.symbol && (
           <Image
@@ -129,17 +130,17 @@ export function Inscricao() {
             aria-hidden="true"
             width={277}
             height={256}
-            className="pointer-events-none absolute -bottom-16 -right-20 h-auto w-[22rem] select-none opacity-[0.07] sm:w-[28rem] lg:-bottom-24 lg:-right-16 lg:w-[34rem]"
+            className="pointer-events-none absolute right-6 top-1/2 h-auto w-[16rem] -translate-y-1/2 select-none opacity-[0.06] sm:right-12 sm:w-[22rem] lg:right-16 lg:w-[26rem]"
           />
         )}
 
-        <div className={`relative grid gap-12 px-6 py-12 sm:px-12 sm:py-16 lg:gap-16 lg:px-16 lg:py-20 ${hasDetails ? "lg:grid-cols-[1.3fr_0.7fr]" : ""}`}>
+        <div className={`relative grid gap-12 px-6 py-12 sm:px-12 sm:py-16 lg:gap-16 lg:p-16 ${hasDetails ? "lg:grid-cols-[1.3fr_0.7fr]" : ""}`}>
           <div className={hasDetails ? "" : "max-w-3xl"}>
-            <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-rose">
-              <span aria-hidden="true" className="h-px w-8 bg-rose/70" />
+            <p className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-rose">
+              <span aria-hidden="true" className="h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
               Inscrição
             </p>
-            <h2 id="inscricao-title" className="mt-6 text-balance text-[2rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-paper sm:text-5xl">
+            <h2 id="inscricao-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] text-paper sm:text-5xl">
               Dê o próximo passo no planejamento da continuidade do seu patrimônio.
             </h2>
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-dark">
@@ -156,7 +157,7 @@ export function Inscricao() {
               {evento.price && (
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">Investimento</p>
-                  <p className="mt-2 text-4xl font-extrabold tracking-tight text-paper">{evento.price}</p>
+                  <p className="mt-2 text-4xl font-semibold tracking-tight text-paper">{evento.price}</p>
                   {evento.priceNote && <p className="mt-1 text-sm text-muted-dark">{evento.priceNote}</p>}
                 </div>
               )}
@@ -186,6 +187,7 @@ export function Inscricao() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import { evento } from "@/config/evento";
 import { CtaLink } from "./CtaLink";
 
 function GenerationsGraphic({ className = "" }: { className?: string }) {
-  const muted = "#3d3539";
+  const muted = "#5e5559";
   const rows = [
     { y: 70, label: "1ª geração" },
     { y: 230, label: "2ª geração" },
@@ -20,18 +20,18 @@ function GenerationsGraphic({ className = "" }: { className?: string }) {
       </defs>
       {rows.map((r) => (
         <g key={r.y}>
-          <line x1="0" x2="420" y1={r.y} y2={r.y} stroke={muted} strokeWidth="1" strokeDasharray="2 6" />
-          <text x="0" y={r.y - 14} fill="#7d7378" fontSize="11" letterSpacing="1.5" fontFamily="inherit">
+          <line x1="0" x2="420" y1={r.y} y2={r.y} stroke="#3a3337" strokeWidth="1" strokeDasharray="2 6" />
+          <text x="0" y={r.y - 14} fill="#8f868a" fontSize="12" letterSpacing="1.5" fontFamily="inherit">
             {r.label.toUpperCase()}
           </text>
         </g>
       ))}
 
       {/* Ramificações */}
-      <path d="M220 70 C 220 150, 150 150, 150 230" stroke={muted} strokeWidth="1.4" />
-      <path d="M150 230 C 150 310, 105 310, 105 390" stroke={muted} strokeWidth="1.4" />
-      <path d="M150 230 C 150 310, 190 310, 190 390" stroke={muted} strokeWidth="1.4" />
-      <path d="M310 230 C 310 310, 360 310, 360 390" stroke={muted} strokeWidth="1.4" />
+      <path d="M220 70 C 220 150, 150 150, 150 230" stroke={muted} strokeWidth="1.5" />
+      <path d="M150 230 C 150 310, 105 310, 105 390" stroke={muted} strokeWidth="1.5" />
+      <path d="M150 230 C 150 310, 190 310, 190 390" stroke={muted} strokeWidth="1.5" />
+      <path d="M310 230 C 310 310, 360 310, 360 390" stroke={muted} strokeWidth="1.5" />
 
       {/* Linha de continuidade */}
       <path
@@ -67,14 +67,7 @@ function GenerationsGraphic({ className = "" }: { className?: string }) {
 }
 
 export function Hero() {
-  const details = [
-    evento.date && { label: "Data", value: evento.date },
-    evento.time && { label: "Horário", value: evento.time },
-    (evento.venue || evento.city) && {
-      label: "Local",
-      value: [evento.venue, evento.city].filter(Boolean).join(" · "),
-    },
-  ].filter(Boolean) as { label: string; value: string }[];
+  const facts = [evento.date, evento.city, evento.format].filter(Boolean) as string[];
 
   return (
     <section id="topo" aria-labelledby="hero-title" className="relative isolate overflow-hidden">
@@ -96,21 +89,21 @@ export function Hero() {
               className="rise mb-10 h-14 w-auto sm:h-16 lg:h-[4.5rem]"
             />
           )}
-          <p className="rise inline-flex items-center gap-3 rounded-full border border-rose/40 bg-rose/[0.06] py-1.5 pl-2 pr-4 text-[0.8rem] font-semibold tracking-wide text-rose-soft">
-            <span aria-hidden="true" className="size-1.5 rounded-full bg-rose" />
-            {evento.theme}
+          {/* Linha de fatos: mostra data · cidade · formato quando confirmados; até lá, o tema */}
+          <p className="rise text-sm font-semibold uppercase tracking-[0.12em] text-rose">
+            {facts.length > 0 ? facts.join(" · ") : evento.theme}
           </p>
 
           <h1
             id="hero-title"
-            className="rise rise-1 mt-7 text-balance text-[2.35rem] font-extrabold leading-[1.04] tracking-[-0.035em] text-paper sm:text-6xl lg:text-[4.25rem]"
+            className="rise rise-1 mt-6 text-balance text-[2.35rem] font-semibold leading-[1.08] tracking-[-0.025em] text-paper sm:text-6xl lg:text-[4rem]"
           >
             Você construiu um patrimônio.{" "}
-            <span className="text-muted-dark">Agora, precisa planejar sua </span>
+            Agora, precisa planejar sua{" "}
             <span className="text-rose">continuidade.</span>
           </h1>
 
-          <p className="rise rise-2 mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted-dark sm:text-xl">
+          <p className="rise rise-2 mt-7 max-w-xl text-pretty text-lg leading-[1.65] text-muted-dark sm:text-xl">
             {evento.description}
           </p>
 
@@ -118,22 +111,12 @@ export function Hero() {
             <CtaLink className="w-full sm:w-auto">Quero participar da imersão</CtaLink>
             <a
               href="#temas"
-              className="inline-flex min-h-12 items-center justify-center px-2 text-sm font-semibold text-muted-dark underline decoration-line-dark underline-offset-[6px] transition-colors hover:text-paper hover:decoration-rose"
+              className="inline-flex min-h-12 items-center justify-center px-2 text-[0.9375rem] font-semibold text-paper underline decoration-paper/40 decoration-1 underline-offset-[6px] transition-colors hover:decoration-rose"
             >
               Ver os temas
             </a>
           </div>
 
-          {details.length > 0 && (
-            <dl className="rise rise-4 mt-12 grid gap-px overflow-hidden rounded-xl border border-line-dark bg-line-dark sm:grid-cols-3">
-              {details.map((d) => (
-                <div key={d.label} className="bg-ink px-5 py-4">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">{d.label}</dt>
-                  <dd className="mt-1 font-semibold text-paper">{d.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
         </div>
 
         <div className="rise rise-2 relative mx-auto w-full max-w-[15rem] sm:max-w-sm lg:max-w-none">

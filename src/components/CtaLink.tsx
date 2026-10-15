@@ -1,11 +1,11 @@
 type Variant = "primary" | "outline-dark" | "outline-light";
 
 const base =
-  "group inline-flex items-center justify-center gap-3 rounded-full font-semibold tracking-tight transition-[background-color,color,border-color,transform,box-shadow] duration-300 ease-out-soft active:translate-y-px";
+  "group inline-flex items-center justify-center gap-3 rounded-[10px] font-semibold tracking-tight transition-[background-color,color,border-color,transform,box-shadow] duration-200 ease-out-soft active:translate-y-px";
 
 const sizes = {
-  md: "min-h-12 px-6 text-[0.95rem]",
-  sm: "min-h-10 px-4 text-sm",
+  md: "min-h-[52px] px-7 text-[0.95rem]",
+  sm: "min-h-11 px-5 text-sm",
 };
 
 const variants: Record<Variant, string> = {

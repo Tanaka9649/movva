@@ -12,13 +12,14 @@ export function Faq() {
 
   return (
     <section id="perguntas" aria-labelledby="perguntas-title" className="on-light bg-paper text-ink">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 md:py-28 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="grid gap-12 border-t border-line-light py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="reveal">
-          <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-wine">
-            <span aria-hidden="true" className="h-px w-8 bg-wine/70" />
+          <p className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-wine">
+            <span aria-hidden="true" className="h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
             Perguntas frequentes
           </p>
-          <h2 id="perguntas-title" className="mt-6 text-balance text-[2rem] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-5xl">
+          <h2 id="perguntas-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] sm:text-5xl">
             Antes de se inscrever.
           </h2>
         </div>
@@ -37,7 +38,7 @@ export function Faq() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="group flex min-h-16 w-full items-center justify-between gap-6 py-6 text-left text-lg font-bold tracking-[-0.01em] transition-colors hover:text-wine sm:text-xl"
+                    className="group flex min-h-16 w-full items-center justify-between gap-6 py-6 text-left text-lg font-semibold tracking-[-0.01em] transition-colors hover:text-wine sm:text-xl"
                   >
                     <span>{item.question}</span>
                     <span
@@ -66,6 +67,7 @@ export function Faq() {
             );
           })}
         </div>
+      </div>
       </div>
     </section>
   );
