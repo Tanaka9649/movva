@@ -66,7 +66,7 @@ export const evento = {
   // DATA, HORÁRIO E LOCAL (preencha apenas quando confirmados)
   // ---------------------------------------------------------------
   /** Texto livre, ex.: "14 de novembro de 2026" */
-  date: "",
+  date: "11 de novembro de 2026",
   /** Texto livre, ex.: "8h às 18h" */
   time: "",
   /** Nome do local, ex.: "Centro de Convenções" */
@@ -74,7 +74,7 @@ export const evento = {
   /** Endereço completo */
   address: "",
   /** Cidade/UF, ex.: "Frutal/MG" */
-  city: "",
+  city: "Frutal/MG",
 
   // ---------------------------------------------------------------
   // INVESTIMENTO (nunca tratar como gratuito por ausência de preço)
@@ -92,7 +92,7 @@ export const evento = {
   // ---------------------------------------------------------------
   speakers: [] as Speaker[],
   /** Formato do evento, ex.: "Presencial, em um dia" */
-  format: "",
+  format: "Mesa redonda",
   schedule: [] as ScheduleItem[],
   testimonials: [] as Testimonial[],
   pastEventPhotos: [] as PastEventPhoto[],
@@ -135,6 +135,10 @@ export const evento = {
       question: "Para quem é a imersão?",
       answer:
         "Para empresários, produtores rurais, sócios, sucessores e famílias empresárias que querem preparar a continuidade do patrimônio e dos negócios entre gerações.",
+    },
+    {
+      question: "Quando, onde e em qual formato será realizada?",
+      answer: "No dia 11 de novembro de 2026, em Frutal/MG, no formato de mesa redonda.",
     },
     {
       question: "Quais temas serão abordados?",

@@ -114,6 +114,7 @@ export function Inscricao() {
     evento.date && { label: "Data", value: evento.date },
     evento.time && { label: "Horário", value: evento.time },
     location.length > 0 && { label: "Local", value: location.join(" — ") },
+    evento.format && { label: "Formato", value: evento.format },
   ].filter(Boolean) as { label: string; value: string }[];
   const inclusions = evento.inclusions.filter(Boolean);
   const hasDetails = Boolean(evento.price) || facts.length > 0 || inclusions.length > 0;
