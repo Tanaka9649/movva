@@ -90,7 +90,34 @@ export const evento = {
   // PALESTRANTES, PROGRAMAÇÃO E PROVA SOCIAL
   // Seções ficam ocultas enquanto as listas estiverem vazias.
   // ---------------------------------------------------------------
-  speakers: [] as Speaker[],
+  speakers: [
+    {
+      name: "Dr. Cleber Petersen",
+      specialty: "Advogado Tributarista | Sócio PIER7, CEO CP Desenvolvimento",
+      bio: "",
+      photo: "/palestrantes/cleber-petersen.webp",
+    },
+    {
+      name: "Karla Freitas",
+      specialty: "Dona Fazenda Bocaina",
+      bio: "",
+      photo: "/palestrantes/karla-freitas.webp",
+    },
+    {
+      name: "Mauri José",
+      specialty: "Dono Coragro",
+      bio: "",
+      photo: "/palestrantes/mauri-jose.webp",
+    },
+    {
+      name: "Dino Marques",
+      specialty: "Sócio PIER7, CEO DM Empresarial",
+      bio: "",
+      photo: "/palestrantes/dino-marques.webp",
+    },
+  ] as Speaker[],
+  /** Quantos cartões "em breve" aparecem depois dos palestrantes confirmados (0 esconde) */
+  speakersSoon: 4,
   /** Formato do evento, ex.: "Presencial, em um dia" */
   format: "Imersão",
   schedule: [] as ScheduleItem[],
