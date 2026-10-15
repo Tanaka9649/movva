@@ -2,6 +2,7 @@ import Image from "next/image";
 import { evento } from "@/config/evento";
 import { CtaLink } from "./CtaLink";
 import { HeroVideo } from "./HeroVideo";
+import { Particulas } from "./Particulas";
 
 /* Instante em que a linha de continuidade alcança cada geração (fração do desenho).
    Comprimento total da linha ≈ 359; o primeiro trecho mede ≈ 191. */
@@ -95,6 +96,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-linear-to-b from-ink/50 via-transparent to-ink" />
         </div>
       )}
+      <Particulas className="-z-10" />
       {/* Grade sutil de fundo */}
       <div
         aria-hidden="true"

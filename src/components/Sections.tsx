@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { evento } from "@/config/evento";
 import { CtaLink } from "./CtaLink";
+import { Particulas } from "./Particulas";
 
 function Eyebrow({ children, tone = "dark" }: { children: React.ReactNode; tone?: "dark" | "light" }) {
   return (
@@ -134,7 +135,8 @@ export function Palestrantes() {
   if (!speakers.length && !testimonials.length && !photos.length && !hasOrganizer) return null;
 
   return (
-    <section id="palestrantes" aria-labelledby="palestrantes-title" className="bg-ink">
+    <section id="palestrantes" aria-labelledby="palestrantes-title" className="relative isolate overflow-hidden bg-ink">
+      <Particulas className="-z-10" />
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
         <div className="reveal max-w-3xl">
           <Eyebrow>{speakers.length ? "Palestrantes" : "Realização"}</Eyebrow>
@@ -144,17 +146,36 @@ export function Palestrantes() {
         </div>
 
         {speakers.length > 0 && (
-          <ul className="reveal mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {speakers.map((s) => (
-              <li key={s.name}>
+          <ul className="mt-14 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
+            {speakers.map((s, i) => (
+              <li key={s.name} className="reveal" style={{ ["--d" as string]: `${i * 90}ms` }}>
                 {s.photo && (
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-graphite">
-                    <Image src={s.photo} alt={`Foto de ${s.name}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover grayscale-[20%]" />
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-white">
+                    <Image src={s.photo} alt={`Foto de ${s.name}`} fill sizes="(min-width:1024px) 22vw, 46vw" className="object-cover" />
                   </div>
                 )}
-                <h3 className="mt-5 text-xl font-semibold text-paper">{s.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-rose">{s.specialty}</p>
+                <h3 className="mt-4 text-lg font-semibold leading-snug text-paper sm:text-xl">{s.name}</h3>
+                <p className="mt-1.5 space-y-0.5 text-sm leading-snug text-rose">
+                  {s.specialty.split("|").map((line) => (
+                    <span key={line} className="block">{line.trim()}</span>
+                  ))}
+                </p>
                 {s.bio && <p className="mt-3 text-pretty leading-relaxed text-muted-dark">{s.bio}</p>}
+              </li>
+            ))}
+            {Array.from({ length: Math.max(0, evento.speakersSoon) }).map((_, i) => (
+              <li
+                key={`em-breve-${i}`}
+                className="reveal"
+                style={{ ["--d" as string]: `${(speakers.length + i) * 90}ms` }}
+              >
+                <div className="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-xl border border-dashed border-line-dark bg-graphite/60">
+                  {evento.symbol && (
+                    <Image src={evento.symbol} alt="" width={277} height={256} aria-hidden="true" className="w-16 opacity-25 sm:w-20" />
+                  )}
+                </div>
+                <h3 className="mt-4 text-lg font-semibold leading-snug text-paper sm:text-xl">Em breve</h3>
+                <p className="mt-1.5 text-sm leading-snug text-muted-dark">Palestrante a ser revelado</p>
               </li>
             ))}
           </ul>
