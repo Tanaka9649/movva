@@ -113,9 +113,9 @@ export const evento = {
    * e preencha os caminhos. Vazio = o topo continua só com o fundo escuro.
    */
   topoVideo: {
-    mp4: "",
-    webm: "",
-    poster: "",
+    mp4: "/video/topo.mp4",
+    webm: "/video/topo.webm",
+    poster: "/video/topo.jpg",
   },
   /**
    * Crachá interativo no cartão de inscrição (arraste para balançar).
