@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { evento } from "@/config/evento";
 import { CtaLink } from "./CtaLink";
+import { Particulas } from "./Particulas";
 
 function Eyebrow({ children, tone = "dark" }: { children: React.ReactNode; tone?: "dark" | "light" }) {
   return (
@@ -134,7 +135,8 @@ export function Palestrantes() {
   if (!speakers.length && !testimonials.length && !photos.length && !hasOrganizer) return null;
 
   return (
-    <section id="palestrantes" aria-labelledby="palestrantes-title" className="bg-ink">
+    <section id="palestrantes" aria-labelledby="palestrantes-title" className="relative isolate overflow-hidden bg-ink">
+      <Particulas className="-z-10" />
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
         <div className="reveal max-w-3xl">
           <Eyebrow>{speakers.length ? "Palestrantes" : "Realização"}</Eyebrow>
