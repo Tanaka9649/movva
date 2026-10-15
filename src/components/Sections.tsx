@@ -21,10 +21,10 @@ function Eyebrow({ children, tone = "dark" }: { children: React.ReactNode; tone?
 /* ------------------------------------------------------------------ */
 
 const questions = [
-  "Quem está sendo preparado para dar continuidade à sua empresa ou propriedade?",
+  "Quem vai dar continuidade à sua empresa ou propriedade?",
   "Sua família conhece seus planos para o futuro do patrimônio?",
-  "Como alinhar os interesses de quem participa da gestão e de quem não trabalha no negócio?",
-  "Quais decisões precisam ser discutidas antes da passagem para a próxima geração?",
+  "Como alinhar quem gere o negócio e quem não participa dele?",
+  "Que decisões precisam vir antes da passagem para a próxima geração?",
 ];
 
 export function Reflexao() {
@@ -39,10 +39,6 @@ export function Reflexao() {
           >
             O que você construiu hoje está preparado para continuar amanhã?
           </h2>
-          <p className="mt-6 max-w-md text-pretty text-lg leading-relaxed text-muted-light">
-            Algumas perguntas costumam ficar para depois. Discuti-las com calma, e no tempo certo, faz parte de preparar
-            a continuidade.
-          </p>
         </div>
 
         <ol className="border-t border-line-light">
@@ -67,15 +63,15 @@ export function Reflexao() {
 const pillars = [
   {
     title: "Planejamento sucessório",
-    text: "Entenda as questões que precisam ser discutidas para preparar a transição entre gerações.",
+    text: "As questões a discutir para preparar a transição entre gerações.",
   },
   {
     title: "Proteção e organização patrimonial",
-    text: "Conheça cuidados e caminhos que podem ser avaliados na organização do patrimônio familiar e empresarial.",
+    text: "Caminhos para organizar e proteger o patrimônio familiar e empresarial.",
   },
   {
     title: "Continuidade dos negócios e da família",
-    text: "Reflita sobre preparação de sucessores, responsabilidades e alinhamento entre familiares.",
+    text: "Preparação de sucessores, responsabilidades e alinhamento entre familiares.",
   },
 ];
 
@@ -213,10 +209,10 @@ export function Palestrantes() {
 /* ------------------------------------------------------------------ */
 
 const audience = [
-  { title: "Empresários", text: "Que conduzem empresas familiares e pensam no futuro da gestão." },
-  { title: "Produtores rurais", text: "Que querem preparar a continuidade da propriedade e da atividade." },
-  { title: "Sócios e sucessores", text: "Que participam, ou vão participar, das decisões sobre o negócio." },
-  { title: "Famílias empresárias", text: "Familiares envolvidos no futuro do negócio, dentro ou fora da gestão." },
+  { title: "Empresários", text: "Que conduzem empresas familiares." },
+  { title: "Produtores rurais", text: "Que querem preparar a continuidade da propriedade." },
+  { title: "Sócios e sucessores", text: "Que participam, ou vão participar, das decisões." },
+  { title: "Famílias empresárias", text: "Dentro ou fora da gestão do negócio." },
 ];
 
 export function ParaQuem() {
@@ -231,12 +227,6 @@ export function ParaQuem() {
               Pensada para quem decide o futuro do patrimônio.
             </h2>
           </div>
-          {evento.format && (
-            <p className="text-lg leading-relaxed text-muted-light lg:pb-2">
-              <span className="font-semibold text-ink">Formato: </span>
-              {evento.format}
-            </p>
-          )}
         </div>
 
         <ul className="reveal mt-14 grid gap-px overflow-hidden rounded-xl border border-line-light bg-line-light sm:grid-cols-2 md:mt-20">

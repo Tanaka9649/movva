@@ -60,7 +60,7 @@ export const evento = {
   name: "Movva",
   theme: "Planejamento sucessório e proteção patrimonial",
   description:
-    "Uma imersão para empresários e produtores rurais que querem compreender como preparar a sucessão, organizar o patrimônio e dar continuidade aos negócios entre gerações.",
+    "Para empresários e produtores rurais que querem preparar a sucessão e proteger o patrimônio da família.",
 
   // ---------------------------------------------------------------
   // DATA, HORÁRIO E LOCAL (preencha apenas quando confirmados)
@@ -133,27 +133,15 @@ export const evento = {
   faq: [
     {
       question: "Para quem é a imersão?",
-      answer:
-        "Para empresários, produtores rurais, sócios, sucessores e famílias empresárias que querem preparar a continuidade do patrimônio e dos negócios entre gerações.",
+      answer: "Para empresários, produtores rurais, sócios, sucessores e famílias empresárias.",
     },
     {
       question: "Quando, onde e em qual formato será realizada?",
       answer: "No dia 11 de novembro de 2026, em Frutal/MG, no formato de mesa redonda.",
     },
     {
-      question: "Quais temas serão abordados?",
-      answer:
-        "A imersão se organiza em três frentes: planejamento sucessório, proteção e organização patrimonial, e continuidade dos negócios e da família.",
-    },
-    {
       question: "Os temas se aplicam a propriedades rurais e imóveis?",
-      answer:
-        "Sim. As discussões consideram empresas familiares, propriedades rurais e imóveis, que costumam concentrar boa parte do patrimônio das famílias empresárias.",
-    },
-    {
-      question: "Familiares que não atuam no negócio também podem se interessar?",
-      answer:
-        "Sim. A imersão foi pensada também para familiares envolvidos no futuro do negócio, incluindo quem não participa da gestão no dia a dia.",
+      answer: "Sim. As discussões consideram empresas familiares, propriedades rurais e imóveis.",
     },
   ] as FaqItem[],
 };

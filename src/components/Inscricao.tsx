@@ -168,10 +168,10 @@ export function Inscricao() {
               Inscrição
             </p>
             <h2 id="inscricao-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] text-paper sm:text-5xl">
-              Dê o próximo passo no planejamento da continuidade do seu patrimônio.
+              Dê o próximo passo na continuidade do seu patrimônio.
             </h2>
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-dark">
-              Participe de uma imersão dedicada às decisões que conectam patrimônio, família e futuro dos negócios.
+              Decisões que conectam patrimônio, família e futuro dos negócios.
             </p>
 
             <div className="mt-10">
