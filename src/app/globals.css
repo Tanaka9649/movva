@@ -212,6 +212,32 @@ body {
   transform: translateY(-101%);
 }
 
+/* Crachá interativo */
+.cracha-stage {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out-soft);
+}
+.cracha-stage[data-ready] {
+  opacity: 1;
+}
+.cracha-group {
+  transform-origin: 0 0;
+  touch-action: pan-y; /* rolagem vertical continua funcionando sobre o crachá */
+  cursor: grab;
+  will-change: transform;
+}
+.cracha-stage[data-static] .cracha-group {
+  cursor: default;
+}
+.cracha-stage[data-grab] .cracha-group {
+  cursor: grabbing;
+}
+.cracha-card {
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 26px 44px -20px rgb(0 0 0 / 0.9);
+}
+
 /* Modal */
 dialog.modal {
   margin: auto;

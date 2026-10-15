@@ -108,6 +108,15 @@ export const evento = {
   symbol: "/brand/movva-simbolo.png",
   /** Texto alternativo da logo */
   logoAlt: "Movva Planejamento Sucessório",
+  /**
+   * Crachá interativo no cartão de inscrição (arraste para balançar).
+   * Deixe `image` vazio para voltar ao símbolo Movva como marca d'água.
+   */
+  cracha: {
+    image: "/cracha/cracha.webp",
+    clip: "/cracha/presilha.webp",
+    strapLogo: "/cracha/logo-cordao.png",
+  },
 
   // ---------------------------------------------------------------
   // REALIZAÇÃO E CONTATOS

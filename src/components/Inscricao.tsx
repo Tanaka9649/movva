@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { evento, isValidRegistrationUrl } from "@/config/evento";
 import { Arrow, buttonClasses } from "./CtaLink";
+import { Cracha } from "./Cracha";
 
 const MODAL_TEXT =
   "As inscrições ainda não estão disponíveis por aqui. Volte em breve para acessar o link de inscrição.";
@@ -148,21 +149,8 @@ export function Inscricao() {
     <section id="inscricao" aria-labelledby="inscricao-title" className="bg-paper pb-16 md:pb-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
       <div className="reveal relative overflow-hidden rounded-xl bg-ink">
-        {/* Marca d'água com o símbolo Movva */}
-        {evento.symbol && (
-          <div
-            aria-hidden="true"
-            data-brand-m
-            className="brand-m pointer-events-none absolute right-6 top-1/2 w-[16rem] -translate-y-1/2 select-none overflow-hidden sm:right-12 sm:w-[22rem] lg:right-16 lg:w-[26rem]"
-          >
-            <Image src={evento.symbol} alt="" width={277} height={256} className="m-base h-auto w-full" />
-            {/* Painel da cor do cartão: sobe e revela o símbolo de baixo para cima */}
-            <span className="m-cover" />
-          </div>
-        )}
-
-        <div className={`relative grid gap-12 px-6 py-12 sm:px-12 sm:py-16 lg:gap-16 lg:p-16 ${hasDetails ? "lg:grid-cols-[1.3fr_0.7fr]" : ""}`}>
-          <div className={hasDetails ? "" : "max-w-3xl"}>
+        <div className="relative grid gap-12 px-6 py-12 sm:px-12 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:p-16">
+          <div>
             <p className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-rose">
               <span aria-hidden="true" className="eb-line h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
               Inscrição
@@ -174,41 +162,65 @@ export function Inscricao() {
               Decisões que conectam patrimônio, família e futuro dos negócios.
             </p>
 
+            {hasDetails && (
+              <div className="mt-8 space-y-6 border-t border-line-dark pt-6">
+                {evento.price && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">Investimento</p>
+                    <p className="mt-2 text-4xl font-semibold tracking-tight text-paper">{evento.price}</p>
+                    {evento.priceNote && <p className="mt-1 text-sm text-muted-dark">{evento.priceNote}</p>}
+                  </div>
+                )}
+                {facts.length > 0 && (
+                  <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))]">
+                    {facts.map((f) => (
+                      <div key={f.label}>
+                        <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">{f.label}</dt>
+                        <dd className="mt-1 font-semibold text-paper">{f.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {inclusions.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">Inclui</p>
+                    <ul className="mt-3 space-y-2">
+                      {inclusions.map((item) => (
+                        <li key={item} className="flex gap-3 text-paper">
+                          <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-rose" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+
             <div className="mt-10">
               <RegistrationButton />
             </div>
           </div>
 
-          {hasDetails && (
-            <div className="space-y-8 border-t border-line-dark pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-              {evento.price && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">Investimento</p>
-                  <p className="mt-2 text-4xl font-semibold tracking-tight text-paper">{evento.price}</p>
-                  {evento.priceNote && <p className="mt-1 text-sm text-muted-dark">{evento.priceNote}</p>}
-                </div>
-              )}
-              {facts.length > 0 && (
-                <dl className="space-y-4">
-                  {facts.map((f) => (
-                    <div key={f.label}>
-                      <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">{f.label}</dt>
-                      <dd className="mt-1 font-semibold text-paper">{f.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-              {inclusions.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-dark">Inclui</p>
-                  <ul className="mt-3 space-y-2">
-                    {inclusions.map((item) => (
-                      <li key={item} className="flex gap-3 text-paper">
-                        <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-rose" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+          {/* Coluna visual: crachá interativo; sem arte configurada, volta o símbolo Movva como marca d'água */}
+          {(evento.cracha.image || evento.symbol) && (
+            <div className="relative -mx-6 -mb-12 h-[28rem] border-t border-line-dark sm:-mx-12 sm:-mb-16 lg:-my-16 lg:-mr-16 lg:h-auto lg:min-h-[36rem] lg:border-l lg:border-t-0">
+              {evento.cracha.image ? (
+                <Cracha
+                  image={evento.cracha.image}
+                  clip={evento.cracha.clip}
+                  strapLogo={evento.cracha.strapLogo}
+                  className="absolute inset-0"
+                />
+              ) : (
+                <div
+                  aria-hidden="true"
+                  data-brand-m
+                  className="brand-m pointer-events-none absolute left-1/2 top-1/2 w-[16rem] -translate-x-1/2 -translate-y-1/2 select-none overflow-hidden sm:w-[18rem]"
+                >
+                  <Image src={evento.symbol} alt="" width={277} height={256} className="m-base h-auto w-full" />
+                  {/* Painel da cor do cartão: sobe e revela o símbolo de baixo para cima */}
+                  <span className="m-cover" />
                 </div>
               )}
             </div>
