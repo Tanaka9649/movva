@@ -10,7 +10,7 @@ function Eyebrow({ children, tone = "dark" }: { children: React.ReactNode; tone?
       }`}
     >
       {/* Único uso do degradê da logo fora dela: assinatura discreta da marca em cada seção */}
-      <span aria-hidden="true" className="h-[2px] w-10 shrink-0 bg-linear-to-r from-brand to-brand-light" />
+      <span aria-hidden="true" className="eb-line h-[2px] w-10 shrink-0 bg-linear-to-r from-brand to-brand-light" />
       {children}
     </p>
   );
@@ -45,9 +45,9 @@ export function Reflexao() {
           </p>
         </div>
 
-        <ol className="reveal border-t border-line-light">
+        <ol className="border-t border-line-light">
           {questions.map((q, i) => (
-            <li key={q} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-line-light py-7 sm:grid-cols-[3.5rem_1fr] sm:py-9">
+            <li key={q} style={{ ["--d" as string]: `${i * 90}ms` }} className="reveal grid grid-cols-[3rem_1fr] gap-4 border-b border-line-light py-7 sm:grid-cols-[3.5rem_1fr] sm:py-9">
               <span aria-hidden="true" className="pt-1 text-sm font-bold tabular-nums tracking-wider text-wine">
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -94,12 +94,12 @@ export function Temas() {
 
         <div className="reveal mt-14 grid gap-0 md:mt-20 md:grid-cols-3 md:gap-10">
           {pillars.map((p, i) => (
-            <article key={p.title} className="group border-t border-line-dark py-8 md:py-0 md:pt-8">
+            <article key={p.title} className="tema border-t border-line-dark py-8 md:py-0 md:pt-8">
               <div className="flex items-baseline justify-between gap-4">
                 <span aria-hidden="true" className="text-[1.75rem] font-semibold tabular-nums tracking-tight text-rose">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span aria-hidden="true" className="h-px flex-1 origin-left scale-x-0 bg-rose/60 transition-transform duration-500 ease-out-soft group-hover:scale-x-100" />
+                <span aria-hidden="true" style={{ ["--d" as string]: `${i * 120}ms` }} className="num-line h-px flex-1 bg-rose/60" />
               </div>
               <h3 className="mt-5 text-xl font-semibold tracking-[-0.01em] text-paper sm:text-2xl">{p.title}</h3>
               <p className="mt-3 text-pretty text-[1.0625rem] leading-[1.65] text-muted-dark">{p.text}</p>

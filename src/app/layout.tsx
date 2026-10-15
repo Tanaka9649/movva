@@ -52,7 +52,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Ativa as animações de revelação apenas com JS disponível */}
         <script
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+          dangerouslySetInnerHTML={{
+            // Rede de segurança: se o observador não assumir em 3,5 s, o conteúdo aparece sem animação
+            __html:
+              "var d=document.documentElement;d.classList.add('js');setTimeout(function(){if(!d.hasAttribute('data-motion-ready'))d.classList.remove('js')},3500)",
+          }}
         />
       </head>
       <body>{children}</body>

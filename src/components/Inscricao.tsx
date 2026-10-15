@@ -8,6 +8,20 @@ import { Arrow, buttonClasses } from "./CtaLink";
 const MODAL_TEXT =
   "As inscrições ainda não estão disponíveis por aqui. Volte em breve para acessar o link de inscrição.";
 
+/** Saída de 150 ms; com movimento reduzido fecha na hora. */
+function closeAnimated(dialog: HTMLDialogElement) {
+  if (!dialog.open || dialog.classList.contains("closing")) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    dialog.close();
+    return;
+  }
+  dialog.classList.add("closing");
+  window.setTimeout(() => {
+    dialog.close();
+    dialog.classList.remove("closing");
+  }, 150);
+}
+
 function RegistrationButton() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -19,14 +33,23 @@ function RegistrationButton() {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
+    // Esc também passa pela saída animada
+    const onCancel = (e: Event) => {
+      e.preventDefault();
+      closeAnimated(dialog);
+    };
     const onClose = () => {
       setIsOpen(false);
       document.documentElement.style.overflow = "";
       // Devolve o foco ao botão que abriu o modal
       triggerRef.current?.focus();
     };
+    dialog.addEventListener("cancel", onCancel);
     dialog.addEventListener("close", onClose);
-    return () => dialog.removeEventListener("close", onClose);
+    return () => {
+      dialog.removeEventListener("cancel", onCancel);
+      dialog.removeEventListener("close", onClose);
+    };
   }, []);
 
   if (active) {
@@ -46,7 +69,9 @@ function RegistrationButton() {
     setIsOpen(true);
   };
 
-  const close = () => dialogRef.current?.close();
+  const close = () => {
+    if (dialogRef.current) closeAnimated(dialogRef.current);
+  };
 
   return (
     <>
@@ -125,20 +150,21 @@ export function Inscricao() {
       <div className="reveal relative overflow-hidden rounded-xl bg-ink">
         {/* Marca d'água com o símbolo Movva */}
         {evento.symbol && (
-          <Image
-            src={evento.symbol}
-            alt=""
+          <div
             aria-hidden="true"
-            width={277}
-            height={256}
-            className="pointer-events-none absolute right-6 top-1/2 h-auto w-[16rem] -translate-y-1/2 select-none opacity-[0.06] sm:right-12 sm:w-[22rem] lg:right-16 lg:w-[26rem]"
-          />
+            data-brand-m
+            className="brand-m pointer-events-none absolute right-6 top-1/2 w-[16rem] -translate-y-1/2 select-none overflow-hidden sm:right-12 sm:w-[22rem] lg:right-16 lg:w-[26rem]"
+          >
+            <Image src={evento.symbol} alt="" width={277} height={256} className="m-base h-auto w-full" />
+            {/* Painel da cor do cartão: sobe e revela o símbolo de baixo para cima */}
+            <span className="m-cover" />
+          </div>
         )}
 
         <div className={`relative grid gap-12 px-6 py-12 sm:px-12 sm:py-16 lg:gap-16 lg:p-16 ${hasDetails ? "lg:grid-cols-[1.3fr_0.7fr]" : ""}`}>
           <div className={hasDetails ? "" : "max-w-3xl"}>
             <p className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-rose">
-              <span aria-hidden="true" className="h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
+              <span aria-hidden="true" className="eb-line h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
               Inscrição
             </p>
             <h2 id="inscricao-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] text-paper sm:text-5xl">

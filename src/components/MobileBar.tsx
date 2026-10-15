@@ -21,8 +21,8 @@ export function MobileBar() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-30 border-t border-line-dark bg-ink/92 px-4 pt-3 backdrop-blur-md transition-[transform,opacity] duration-300 ease-out-soft md:hidden ${
-        hidden ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"
+      className={`fixed inset-x-0 bottom-0 z-30 border-t border-line-dark bg-ink/92 px-4 pt-3 backdrop-blur-md transition-[transform,opacity] ease-out-soft md:hidden ${
+        hidden ? "pointer-events-none translate-y-full opacity-0 duration-200" : "translate-y-0 opacity-100 duration-[280ms]"
       }`}
       style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       aria-hidden={hidden}

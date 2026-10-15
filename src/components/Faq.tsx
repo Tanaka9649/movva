@@ -16,7 +16,7 @@ export function Faq() {
       <div className="grid gap-12 border-t border-line-light py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="reveal">
           <p className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-wine">
-            <span aria-hidden="true" className="h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
+            <span aria-hidden="true" className="eb-line h-[2px] w-10 bg-linear-to-r from-brand to-brand-light" />
             Perguntas frequentes
           </p>
           <h2 id="perguntas-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] sm:text-5xl">
@@ -49,7 +49,7 @@ export function Faq() {
                     >
                       <span className="absolute h-px w-3.5 bg-current" />
                       <span
-                        className={`absolute h-3.5 w-px bg-current transition-transform duration-300 ease-out-soft ${isOpen ? "scale-y-0" : "scale-y-100"}`}
+                        className={`absolute h-3.5 w-px bg-current transition-transform duration-[180ms] ease-out-soft ${isOpen ? "scale-y-0" : "scale-y-100"}`}
                       />
                     </span>
                   </button>
@@ -59,7 +59,7 @@ export function Faq() {
                   role="region"
                   aria-labelledby={buttonId}
                   hidden={!isOpen}
-                  className="pb-7 pr-12"
+                  className="faq-answer pb-7 pr-12"
                 >
                   <p className="text-pretty text-lg leading-relaxed text-muted-light">{item.answer}</p>
                 </div>
