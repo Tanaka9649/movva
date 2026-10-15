@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { Fita } from "@/components/Fita";
 import { Footer, Palestrantes, ParaQuem, Reflexao, Temas } from "@/components/Sections";
 import { Inscricao } from "@/components/Inscricao";
 import { Faq } from "@/components/Faq";
@@ -18,6 +19,7 @@ export default function Home() {
       <Header />
       <main id="conteudo">
         <Hero />
+        <Fita />
         <Reflexao />
         <Temas />
         <Palestrantes />

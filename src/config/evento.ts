@@ -92,7 +92,7 @@ export const evento = {
   // ---------------------------------------------------------------
   speakers: [] as Speaker[],
   /** Formato do evento, ex.: "Presencial, em um dia" */
-  format: "Mesa redonda",
+  format: "Imersão",
   schedule: [] as ScheduleItem[],
   testimonials: [] as Testimonial[],
   pastEventPhotos: [] as PastEventPhoto[],
@@ -108,6 +108,15 @@ export const evento = {
   symbol: "/brand/movva-simbolo.png",
   /** Texto alternativo da logo */
   logoAlt: "Movva Planejamento Sucessório",
+  /**
+   * Vídeo de fundo do topo (desfocado). Gere os arquivos com scripts/preparar-video.sh
+   * e preencha os caminhos. Vazio = o topo continua só com o fundo escuro.
+   */
+  topoVideo: {
+    mp4: "/video/topo.mp4",
+    webm: "/video/topo.webm",
+    poster: "/video/topo.jpg",
+  },
   /**
    * Crachá interativo no cartão de inscrição (arraste para balançar).
    * Deixe `image` vazio para voltar ao símbolo Movva como marca d'água.
@@ -146,7 +155,7 @@ export const evento = {
     },
     {
       question: "Quando, onde e em qual formato será realizada?",
-      answer: "No dia 11 de novembro de 2026, em Frutal/MG, no formato de mesa redonda.",
+      answer: "No dia 11 de novembro de 2026, em Frutal/MG, em formato de imersão.",
     },
     {
       question: "Os temas se aplicam a propriedades rurais e imóveis?",
