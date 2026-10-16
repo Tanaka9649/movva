@@ -99,13 +99,13 @@ export const evento = {
     },
     {
       name: "Karla Freitas",
-      specialty: "CEO da Fazenda Bocaina",
+      specialty: "CEO Fazenda Bocaina",
       bio: "",
       photo: "/palestrantes/karla-freitas.webp",
     },
     {
       name: "Mauri José",
-      specialty: "CEO da Coragro",
+      specialty: "CEO Coragro",
       bio: "",
       photo: "/palestrantes/mauri-jose.webp",
     },
