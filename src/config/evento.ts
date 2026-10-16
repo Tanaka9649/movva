@@ -93,25 +93,25 @@ export const evento = {
   speakers: [
     {
       name: "Dr. Cleber Petersen",
-      specialty: "Advogado Tributarista | Sócio PIER7, CEO CP Desenvolvimento",
+      specialty: "Advogado Tributarista | Sócio PIER7 e CEO CP Desenvolvimento",
       bio: "",
       photo: "/palestrantes/cleber-petersen.webp",
     },
     {
       name: "Karla Freitas",
-      specialty: "Dona Fazenda Bocaina",
+      specialty: "CEO da Fazenda Bocaina",
       bio: "",
       photo: "/palestrantes/karla-freitas.webp",
     },
     {
       name: "Mauri José",
-      specialty: "Dono Coragro",
+      specialty: "CEO da Coragro",
       bio: "",
       photo: "/palestrantes/mauri-jose.webp",
     },
     {
       name: "Dino Marques",
-      specialty: "Sócio PIER7, CEO DM Empresarial",
+      specialty: "Sócio PIER7 e CEO DM Empresarial",
       bio: "",
       photo: "/palestrantes/dino-marques.webp",
     },
@@ -185,8 +185,8 @@ export const evento = {
       answer: "No dia 11 de novembro de 2026, em Frutal/MG, em formato de imersão.",
     },
     {
-      question: "Os temas se aplicam a propriedades rurais e imóveis?",
-      answer: "Sim. As discussões consideram empresas familiares, propriedades rurais e imóveis.",
+      question: "Os temas se aplicam a negócios familiares, propriedades rurais e imóveis?",
+      answer: "Sim. As discussões consideram negócios familiares, propriedades rurais e imóveis.",
     },
   ] as FaqItem[],
 };
