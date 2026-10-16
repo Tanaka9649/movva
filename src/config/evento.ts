@@ -185,8 +185,8 @@ export const evento = {
       answer: "No dia 11 de novembro de 2026, em Frutal/MG, em formato de imersão.",
     },
     {
-      question: "Os temas se aplicam a negócios familiares, propriedades rurais e imóveis?",
-      answer: "Sim. As discussões consideram negócios familiares, propriedades rurais e imóveis.",
+      question: "Os temas se aplicam a propriedades rurais, negócios familiares e imóveis?",
+      answer: "Sim. As discussões consideram empresas familiares, propriedades rurais e imóveis.",
     },
   ] as FaqItem[],
 };
