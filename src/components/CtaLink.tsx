@@ -1,3 +1,5 @@
+import { evento, isValidRegistrationUrl } from "@/config/evento";
+
 type Variant = "primary" | "outline-dark" | "outline-light";
 
 const base =
@@ -30,7 +32,7 @@ export function Arrow({ className = "" }: { className?: string }) {
   );
 }
 
-/** Link interno que sempre leva à seção de inscrição (#inscricao). */
+/** Leva ao formulário de inscrição; sem link válido no config, rola até a seção de inscrição (#inscricao). */
 export function CtaLink({
   children,
   variant = "primary",
@@ -45,7 +47,7 @@ export function CtaLink({
   arrow?: boolean;
 }) {
   return (
-    <a href="#inscricao" className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}>
+    <a href={isValidRegistrationUrl(evento.registrationUrl) ? evento.registrationUrl.trim() : "#inscricao"} className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}>
       <span>{children}</span>
       {arrow && <Arrow />}
     </a>
