@@ -51,7 +51,7 @@ export const evento = {
   // ---------------------------------------------------------------
   // INSCRIÇÃO — único campo a alterar para ativar o botão final
   // ---------------------------------------------------------------
-  registrationUrl: "https://convidados-avanca.replit.app/e/movva-planejamento-sucessorio-2026-11-11",
+  registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfV5fjYiMbOs0AJQa0trW5MYgPQ0JK7TFZCoIxgm4f6grA-Pg/viewform?usp=publish-editor",
 
   // ---------------------------------------------------------------
   // IDENTIFICAÇÃO DO EVENTO
