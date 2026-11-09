@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Fita } from "@/components/Fita";
-import { Footer, Palestrantes, ParaQuem, Reflexao, Temas } from "@/components/Sections";
+import { Footer, Palestrantes, Patrocinadores, ParaQuem, Reflexao, Temas } from "@/components/Sections";
 import { Inscricao } from "@/components/Inscricao";
 import { Faq } from "@/components/Faq";
 import { MobileBar } from "@/components/MobileBar";
@@ -23,6 +23,7 @@ export default function Home() {
         <Reflexao />
         <Temas />
         <Palestrantes />
+        <Patrocinadores />
         <ParaQuem />
         <Inscricao />
         <Faq />

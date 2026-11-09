@@ -17,6 +17,15 @@ export type Speaker = {
   photo: string;
 };
 
+export type Sponsor = {
+  name: string;
+  logo: string;
+  width: number;
+  height: number;
+  /** Largura máxima da logo em rem, para equilibrar o peso visual entre marcas */
+  maxRem: number;
+};
+
 export type ScheduleItem = {
   time: string;
   title: string;
@@ -116,8 +125,11 @@ export const evento = {
       photo: "/palestrantes/dino-marques.webp",
     },
   ] as Speaker[],
-  /** Quantos cartões "em breve" aparecem depois dos palestrantes confirmados (0 esconde) */
-  speakersSoon: 4,
+  /** Patrocinadores oficiais (sem categorias). Lista vazia esconde a seção. width/height = proporção do SVG */
+  sponsors: [
+    { name: "Dichat", logo: "/patrocinadores/dichat.svg", width: 1547, height: 358, maxRem: 12.5 },
+    { name: "Sicoob", logo: "/patrocinadores/sicoob.svg", width: 604, height: 137, maxRem: 14.5 },
+  ] as Sponsor[],
   /** Formato do evento, ex.: "Presencial, em um dia" */
   format: "Imersão",
   schedule: [] as ScheduleItem[],

@@ -315,3 +315,21 @@ dialog.modal.closing::backdrop {
     animation: none;
   }
 }
+
+/* Patrocinadores: elevação discreta no hover */
+.patrocinador {
+  transition:
+    transform 350ms var(--ease-out-soft),
+    box-shadow 350ms var(--ease-out-soft);
+}
+@media (hover: hover) {
+  .patrocinador:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -14px rgb(0 0 0 / 0.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .patrocinador:hover {
+    transform: none;
+  }
+}

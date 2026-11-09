@@ -137,7 +137,7 @@ export function Palestrantes() {
   return (
     <section id="palestrantes" aria-labelledby="palestrantes-title" className="relative isolate overflow-hidden bg-ink">
       <Particulas className="-z-10" />
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 md:pb-20 md:pt-28">
         <div className="reveal max-w-3xl">
           <Eyebrow>{speakers.length ? "Palestrantes" : "Realização"}</Eyebrow>
           <h2 id="palestrantes-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] text-paper sm:text-5xl">
@@ -161,21 +161,6 @@ export function Palestrantes() {
                   ))}
                 </p>
                 {s.bio && <p className="mt-3 text-pretty leading-relaxed text-muted-dark">{s.bio}</p>}
-              </li>
-            ))}
-            {Array.from({ length: Math.max(0, evento.speakersSoon) }).map((_, i) => (
-              <li
-                key={`em-breve-${i}`}
-                className="reveal"
-                style={{ ["--d" as string]: `${(speakers.length + i) * 90}ms` }}
-              >
-                <div className="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-xl border border-dashed border-line-dark bg-graphite/60">
-                  {evento.symbol && (
-                    <Image src={evento.symbol} alt="" width={277} height={256} aria-hidden="true" className="w-16 opacity-25 sm:w-20" />
-                  )}
-                </div>
-                <h3 className="mt-4 text-lg font-semibold leading-snug text-paper sm:text-xl">Em breve</h3>
-                <p className="mt-1.5 text-sm leading-snug text-muted-dark">Palestrante a ser revelado</p>
               </li>
             ))}
           </ul>
@@ -220,6 +205,38 @@ export function Palestrantes() {
             ))}
           </ul>
         )}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* PATROCINADORES — oculto enquanto a lista em evento.sponsors estiver vazia */
+/* ------------------------------------------------------------------ */
+
+export function Patrocinadores() {
+  const sponsors = evento.sponsors.filter((s) => s.name && s.logo);
+  if (!sponsors.length) return null;
+
+  return (
+    <section aria-labelledby="patrocinadores-title" className="border-t border-line-dark bg-ink">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-16">
+        <h2
+          id="patrocinadores-title"
+          className="reveal text-center text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-muted-dark"
+        >
+          Marcas que movem essa experiência
+        </h2>
+        <ul className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8 md:gap-10">
+          {sponsors.map((s, i) => (
+            <li key={s.name} className="reveal w-full max-w-[19rem] sm:w-auto" style={{ ["--d" as string]: `${140 + i * 140}ms` }}>
+              <div className="patrocinador grid h-[5.5rem] place-items-center rounded-xl bg-paper px-8 sm:h-24 sm:w-[19rem]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.logo} alt={s.name} width={s.width} height={s.height} className="h-auto w-full" style={{ maxWidth: `${s.maxRem}rem`, aspectRatio: `${s.width} / ${s.height}` }} />
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
