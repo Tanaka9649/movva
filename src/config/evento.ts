@@ -15,6 +15,8 @@ export type Speaker = {
   bio: string;
   /** Caminho da foto dentro de /public, ex.: "/palestrantes/nome.jpg" */
   photo: string;
+  /** Identificação discreta no card, ex.: "Mesa redonda" (convidados sem palestra individual) */
+  tag?: string;
 };
 
 export type Sponsor = {
@@ -69,7 +71,7 @@ export const evento = {
   name: "Movva",
   theme: "Planejamento sucessório e proteção patrimonial",
   description:
-    "Para empresários e produtores rurais que querem preparar a sucessão e proteger o patrimônio da família.",
+    "Para empresários e produtores rurais: uma imersão sobre sucessão, proteção patrimonial e os desafios da reforma tributária para o futuro da sua família e do seu negócio.",
 
   // ---------------------------------------------------------------
   // DATA, HORÁRIO E LOCAL (preencha apenas quando confirmados)
@@ -123,6 +125,20 @@ export const evento = {
       specialty: "Sócio PIER7 e CEO DM Empresarial",
       bio: "",
       photo: "/palestrantes/dino-marques.webp",
+    },
+    {
+      name: "Adilberto Junior",
+      specialty: "CEO ISM Agropecuária | Pecuarista",
+      bio: "",
+      photo: "/palestrantes/adilberto-junior.webp",
+      tag: "Mesa redonda",
+    },
+    {
+      name: "Eduardo Mendonça",
+      specialty: "CEO Sementes Papini | Sócio Maria Fumaça | Produtor rural",
+      bio: "",
+      photo: "/palestrantes/eduardo-mendonca.webp",
+      tag: "Mesa redonda",
     },
   ] as Speaker[],
   /** Patrocinadores oficiais (sem categorias). Lista vazia esconde a seção. width/height = proporção do SVG */

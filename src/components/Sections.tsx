@@ -74,6 +74,10 @@ const pillars = [
     title: "Continuidade dos negócios e da família",
     text: "Preparação de sucessores, responsabilidades e alinhamento entre familiares.",
   },
+  {
+    title: "Cenário tributário e reforma tributária",
+    text: "Entenda como as mudanças tributárias entram nas decisões sobre patrimônio, sucessão e continuidade do negócio.",
+  },
 ];
 
 const contexts = ["Empresas familiares", "Propriedades rurais", "Imóveis"];
@@ -85,11 +89,11 @@ export function Temas() {
         <div className="reveal max-w-3xl">
           <Eyebrow>Temas da imersão</Eyebrow>
           <h2 id="temas-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] text-paper sm:text-5xl">
-            Três frentes para pensar a continuidade com clareza.
+            Quatro frentes para pensar a continuidade com clareza.
           </h2>
         </div>
 
-        <div className="reveal mt-14 grid gap-0 md:mt-20 md:grid-cols-3 md:gap-10">
+        <div className="reveal mt-14 grid gap-0 md:mt-20 md:grid-cols-2 md:gap-x-10 md:gap-y-14">
           {pillars.map((p, i) => (
             <article key={p.title} className="tema border-t border-line-dark py-8 md:py-0 md:pt-8">
               <div className="flex items-baseline justify-between gap-4">
@@ -139,19 +143,19 @@ export function Palestrantes() {
       <Particulas className="-z-10" />
       <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 sm:px-8 md:pb-20 md:pt-28">
         <div className="reveal max-w-3xl">
-          <Eyebrow>{speakers.length ? "Palestrantes" : "Realização"}</Eyebrow>
+          <Eyebrow>{speakers.length ? "Palestrantes e convidados" : "Realização"}</Eyebrow>
           <h2 id="palestrantes-title" className="mt-6 text-balance text-[2rem] font-semibold leading-[1.1] tracking-[-0.022em] text-paper sm:text-5xl">
             {speakers.length ? "Quem conduz a imersão." : "Quem está por trás da imersão."}
           </h2>
         </div>
 
         {speakers.length > 0 && (
-          <ul className="mt-14 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
+          <ul className="mt-14 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
             {speakers.map((s, i) => (
               <li key={s.name} className="reveal" style={{ ["--d" as string]: `${i * 90}ms` }}>
                 {s.photo && (
                   <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-white">
-                    <Image src={s.photo} alt={`Foto de ${s.name}`} fill sizes="(min-width:1024px) 22vw, 46vw" className="object-cover" />
+                    <Image src={s.photo} alt={`Foto de ${s.name}`} fill sizes="(min-width:1152px) 352px, (min-width:1024px) 30vw, (min-width:640px) 46vw, 92vw" className="object-cover" />
                   </div>
                 )}
                 <h3 className="mt-4 text-lg font-semibold leading-snug text-paper sm:text-xl">{s.name}</h3>
@@ -160,6 +164,11 @@ export function Palestrantes() {
                     <span key={line} className="block">{line.trim()}</span>
                   ))}
                 </p>
+                {s.tag && (
+                  <p className="mt-3 inline-flex rounded-md border border-line-dark px-2.5 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-muted-dark">
+                    {s.tag}
+                  </p>
+                )}
                 {s.bio && <p className="mt-3 text-pretty leading-relaxed text-muted-dark">{s.bio}</p>}
               </li>
             ))}
